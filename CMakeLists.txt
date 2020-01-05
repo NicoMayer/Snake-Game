@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
-project(Snake_Game)
 
 set(CMAKE_CXX_STANDARD 14)
+project(Snake_Game)
 
 enable_testing()
-include_directories(include)
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
 
+add_subdirectory(externals/catch2)
 add_subdirectory(source)
 add_subdirectory(tests)
-
