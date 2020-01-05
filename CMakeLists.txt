@@ -3,8 +3,6 @@ project(Snake_Game)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(Termbox REQUIRED)
-
 enable_testing()
 include_directories(include)
 
