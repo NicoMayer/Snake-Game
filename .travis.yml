@@ -1,0 +1,16 @@
+language: cpp
+
+compiler:
+    - gcc
+    - clang
+
+#Install Termbox
+apt_packages:
+    - libtermbox1
+
+before_script:
+    - mkdir build
+    - cd build
+    - cmake ..
+
+script: make && make test
