@@ -1,12 +1,10 @@
 #include "food.hpp"
 
-Food::Food(int x, int y)
-    : x(x), y(y) {}
-
-int Food::X() const {
-    return x;
+Food::Food(Point pos)
+    : pos(pos) {
 }
 
-int Food::Y() const {
-    return y;
+
+Point Food::get_pos() const {
+    return pos;
 }

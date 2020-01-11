@@ -4,10 +4,8 @@
 #include <vector>
 #include <initializer_list>
 
-struct Point {
-    unsigned int x;
-    unsigned int y;
-};
+#include "point.hpp"
+
 
 class Snake {
 public:
@@ -20,9 +18,11 @@ public:
 
     Snake(Snake::Direction dir, std::initializer_list<Point> body);
      
-    bool is_on_pos(unsigned int x, unsigned int y) const;
+    bool is_on_pos(Point pos) const;
 
     Snake::Direction get_direction() const;
+    Point get_head_pos() const;
+    
 private:
     
     std::vector<Point> body;

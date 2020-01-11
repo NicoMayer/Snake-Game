@@ -1,14 +1,15 @@
 #ifndef FOOD_HPP
 #define FOOD_HPP
 
+#include "point.hpp"
+
 class Food {
     
-    const int x, y;
+    const Point pos;
 
 public:
-    Food(int x, int y);
-    int X() const;
-    int Y() const;
+    Food(Point pos);
+    Point get_pos() const;
 };
 
 #endif //FOOD_HPP

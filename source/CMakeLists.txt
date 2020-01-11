@@ -1,6 +1,7 @@
 project(Snake_Game_Run)
 
 add_library(snake_game_lib STATIC 
+            point.hpp
             food.hpp 
             food.cpp
             snake.hpp

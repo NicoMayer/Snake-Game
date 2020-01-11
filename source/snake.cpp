@@ -6,12 +6,12 @@ Snake::Snake(Snake::Direction dir, std::initializer_list<Point> body)
     
 }
 
-bool Snake::is_on_pos(unsigned int x, unsigned int y) const {
+bool Snake::is_on_pos(Point pos) const {
 
     bool is_on_position = false;
    
     for(auto snake_cell : body) {
-        if (snake_cell.x == x and snake_cell.y == y) {
+        if (pos == snake_cell) {
             is_on_position = true;
         }
     } 
@@ -22,4 +22,11 @@ Snake::Direction Snake::get_direction() const {
     return direction;
 }
 
-
+Point Snake::get_head_pos() const {
+    if (body.size() > 0) {
+        return body[0];
+    }
+    else {
+        return Point{0,0};
+    }
+}
