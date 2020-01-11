@@ -4,12 +4,10 @@
 
 TEST_CASE("Create a new food", "[food]") {
 
-    auto x = GENERATE(take(10, random(-10, 10)));
-    auto y = GENERATE(take(10, random(-10, 10)));
+    auto x = GENERATE(take(10, random(0u, 1000u)));
+    auto y = GENERATE(take(10, random(0u, 1000u)));
     
-    Food food(x, y);
+    Food food({x, y});
 
-    REQUIRE( x == food.X());
-    REQUIRE( y == food.Y());
-
+    REQUIRE(food.get_pos() == Point{x, y}); 
 }
