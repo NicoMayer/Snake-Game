@@ -1,5 +1,5 @@
-#ifndef FOOD_H
-#define FOOD_H
+#ifndef FOOD_HPP
+#define FOOD_HPP
 
 class Food {
     
@@ -11,4 +11,4 @@ public:
     int Y() const;
 };
 
-#endif //FOOD_H
+#endif //FOOD_HPP
