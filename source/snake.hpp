@@ -1,7 +1,7 @@
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
-#include <vector>
+#include <deque>
 #include <initializer_list>
 
 #include "point.hpp"
@@ -20,12 +20,16 @@ public:
      
     bool is_on_pos(Point pos) const;
 
+    void change_direction(Snake::Direction dir);
+
+    bool move();
+
     Snake::Direction get_direction() const;
     Point get_head_pos() const;
     
 private:
     
-    std::vector<Point> body;
+    std::deque<Point> body;
     Snake::Direction direction; 
 };
 
