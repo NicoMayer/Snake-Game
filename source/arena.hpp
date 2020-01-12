@@ -13,6 +13,7 @@ public:
     
 private:
 
+    bool check_outside_snake();
     std::shared_ptr<Snake> snake;
 
     const size_t height;
