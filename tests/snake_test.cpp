@@ -10,7 +10,8 @@ TEST_CASE( "snake can be created", "[snake]" ) {
     REQUIRE( snake.is_on_pos(Point{x:1, y:0}) );
     REQUIRE( snake.is_on_pos(Point{x:2, y:0}) );
 
-    REQUIRE( snake.get_head_pos() == Point{x:0, y:0} );
+    REQUIRE( snake.get_head_pos().equal(Point{x:0, y:0}) );
+
     
     REQUIRE( snake.get_direction() == Snake::UP );
 }
@@ -24,7 +25,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
     SECTION( "snake can be move up") {
 
         snake.change_direction(Snake::UP);
-            
+        snake.move();            
         REQUIRE( snake.is_on_pos(Point{x:10, y:9}) );
 
     }
@@ -32,7 +33,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
     SECTION( "snake can be move down" ) {
 
         snake.change_direction(Snake::DOWN);
-
+        snake.move();
         REQUIRE( snake.is_on_pos(Point{x:10, y:11}) );
 
     }
@@ -40,7 +41,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
     SECTION( "snake can be move right" ) {
 
         snake.change_direction(Snake::RIGHT);
-
+        snake.move();
         REQUIRE( snake.is_on_pos(Point{x:9, y:10}) );
 
     }
@@ -48,7 +49,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
     SECTION( "snake can be move left" ) {
         
         snake.change_direction(Snake::LEFT);
-        
+        snake.move();
         REQUIRE( snake.is_on_pos(Point{x:11, y:10}) );
     }
 
