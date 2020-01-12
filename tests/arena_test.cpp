@@ -21,9 +21,9 @@ TEST_CASE( "arena can move the snake", "[arena]"){
 
     }
 
-    SECTION( "move_snake returns false if the head leaves not the arena" ) {
+    SECTION( "move_snake returns true if the head leaves not the arena" ) {
 
-        auto snake = std::shared_ptr<Snake>(new Snake(Snake::RIGHT, {{10, 10}, {11,10}}));
+        auto snake = std::shared_ptr<Snake>(new Snake(Snake::RIGHT, {{12, 10}, {11,10}}));
 
         Arena arena(snake, 16, 16);
 
