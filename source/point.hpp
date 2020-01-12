@@ -2,13 +2,11 @@
 #define POINT_HPP
 
 struct Point {
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
     
-    bool operator == (const Point& point) const {
-        return point.x == x and point.y == y;
-    }
-
+    bool equal(const Point& point) const; 
+    void add(int x, int y);    
 };
 
 #endif //POINT_HPP
