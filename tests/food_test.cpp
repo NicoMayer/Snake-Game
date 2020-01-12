@@ -4,10 +4,10 @@
 
 TEST_CASE("Create a new food", "[food]") {
 
-    auto x = GENERATE(take(10, random(0u, 1000u)));
-    auto y = GENERATE(take(10, random(0u, 1000u)));
+    auto x = GENERATE(take(10, random(-10, 10)));
+    auto y = GENERATE(take(10, random(-10, 10)));
     
     Food food({x, y});
 
-    REQUIRE(food.get_pos() == Point{x, y}); 
+    REQUIRE(food.get_pos().equal({x, y}) ); 
 }
