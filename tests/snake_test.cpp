@@ -42,7 +42,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
 
         snake.change_direction(Snake::RIGHT);
         snake.move();
-        REQUIRE( snake.is_on_pos(Point{x:9, y:10}) );
+        REQUIRE( snake.is_on_pos(Point{x:11, y:10}) );
 
     }
 
@@ -50,7 +50,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
         
         snake.change_direction(Snake::LEFT);
         snake.move();
-        REQUIRE( snake.is_on_pos(Point{x:11, y:10}) );
+        REQUIRE( snake.is_on_pos(Point{x:10, y:10}) );
     }
 
 }
