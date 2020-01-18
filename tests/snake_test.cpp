@@ -67,10 +67,7 @@ TEST_CASE( "snake can grow" ) {
 
     Snake snake(Snake::UP, {{1, 1}});
 
-    REQUIRE( snake.grow() == true );
+    snake.grow();
     REQUIRE( snake.length() == 2 );
-
-    REQUIRE( snake.is_on_pos(Point{x:1, y:1});
-    REQUIRE( snake.is_on_pos(Point{x:0, y:1});
 
 }
