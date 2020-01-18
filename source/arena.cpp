@@ -6,23 +6,29 @@ Arena::Arena(const std::shared_ptr<Snake> &snake, size_t height, size_t width)
 
 }
 
-
 bool Arena::move_snake(){
 
-    bool is_ok = true;
+    if (snake == nullptr){
+        return false;
+    }
 
-    if (snake == nullptr) {
-        return false; 
+    if (snake->move() == false) {
+        return false;
+    }
+
+    if (check_outside_snake() == true) {
+        return false;
     }
     
-    is_ok = snake->move();
-    is_ok = is_ok and not check_outside_snake();
-    
-    return is_ok;
+    return true;
 }
 
 bool Arena::check_outside_snake() {
     
+    if (snake == nullptr) {
+        return false;
+    }
+
     Point head_pos = snake->get_head_pos();
 
     if (head_pos.x < 0 or 
