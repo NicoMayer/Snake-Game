@@ -2,6 +2,7 @@
 #include "catch.hpp"
 #include "arena.hpp"
 #include "snake.hpp"
+#include "point.hpp"
 
 TEST_CASE( "arena can move the snake", "[arena]"){
 
@@ -41,3 +42,15 @@ TEST_CASE( "arena can move the snake", "[arena]"){
         REQUIRE( arena.move_snake() == false);
     }
 }
+
+TEST_CASE( "arena can produce food and check the position of the food" ) {
+
+    Arena arena(nullptr, 16, 16);
+    
+    Point food_cell = arena.get_food_pos();
+    REQUIRE( arena.is_food_cell(food_cell) == true );
+
+    Point no_food_cell = food_cell.add(-1, -1);
+    REQUIRE( arena.is_food_cell(no_food_cell) == false );
+
+} 
