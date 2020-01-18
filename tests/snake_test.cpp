@@ -69,5 +69,8 @@ TEST_CASE( "snake can grow" ) {
 
     snake.grow();
     REQUIRE( snake.get_length() == 2 );
+    REQUIRE( snake.move() == true );
+    REQUIRE( snake.is_on_pos(Point{x:1, y:1}) );
+    REQUIRE( snake.is_on_pos(Point{x:1, y:0}) );
 
 }
