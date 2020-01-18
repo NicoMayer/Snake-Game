@@ -62,3 +62,15 @@ TEST_CASE( "snake can be handle a invalid direction", "[snake]") {
     REQUIRE( snake.move() == false );
     REQUIRE( snake.is_on_pos(Point{x:0, y:0}) );
 }
+
+TEST_CASE( "snake can grow" ) {
+
+    Snake snake(Snake::UP, {{1, 1}});
+
+    REQUIRE( snake.grow() == true );
+    REQUIRE( snake.length() == 2 );
+
+    REQUIRE( snake.is_on_pos(Point{x:1, y:1});
+    REQUIRE( snake.is_on_pos(Point{x:0, y:1});
+
+}
