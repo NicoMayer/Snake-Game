@@ -2,7 +2,7 @@
 
 
 Snake::Snake(Direction dir, std::initializer_list<Point> body) 
-    : body(body), direction(dir) {
+    : body(body), direction(dir) , length(body.size()) {
     
 }
 
@@ -31,6 +31,10 @@ Point Snake::get_head_pos() const {
     }
 }
 
+size_t Snake::get_length() const {
+    return length;
+}
+
 void Snake::change_direction(Direction dir) {
 
     direction = dir;
@@ -55,14 +59,23 @@ bool Snake::move() {
             break;
     }
 
-    if (!is_on_pos(new_snake_head)) {
-        body.pop_back();
-        body.push_front(new_snake_head);
-        return true;
-    }
-    else {
+    if (is_on_pos(new_snake_head)) {
         return false;
     }
+
+    if (length > body.size()) {
+        body.push_front(new_snake_head); 
+    }
+    else {
+        body.pop_back();
+        body.push_front(new_snake_head);
+    }
+
+    return true;
 }
          
-    
+void Snake::grow() {
+   length += 1;
+}
+ 
+        

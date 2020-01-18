@@ -3,7 +3,7 @@
 
 #include <deque>
 #include <initializer_list>
-
+#include <cstddef>
 #include "point.hpp"
 
 
@@ -21,15 +21,16 @@ public:
     Snake(Direction dir, std::initializer_list<Point> body);
      
     bool is_on_pos(Point pos) const;
-
     void change_direction(Direction dir);
 
     bool move();
+    void grow();
 
     Snake::Direction get_direction() const;
     Point get_head_pos() const;
-    
+    size_t get_length() const; 
 private:
+    size_t length;  
     
     std::deque<Point> body;
     Direction direction; 

@@ -68,6 +68,6 @@ TEST_CASE( "snake can grow" ) {
     Snake snake(Snake::UP, {{1, 1}});
 
     snake.grow();
-    REQUIRE( snake.length() == 2 );
+    REQUIRE( snake.get_length() == 2 );
 
 }
