@@ -7,20 +7,22 @@
 #include "point.hpp"
 
 
+
 class Snake {
 public:
+
     enum Direction {
         UP,
         DOWN,
         RIGHT,
-        LEFT
+        LEFT 
     };
 
-    Snake(Snake::Direction dir, std::initializer_list<Point> body);
+    Snake(Direction dir, std::initializer_list<Point> body);
      
     bool is_on_pos(Point pos) const;
 
-    void change_direction(Snake::Direction dir);
+    void change_direction(Direction dir);
 
     bool move();
 
@@ -30,7 +32,7 @@ public:
 private:
     
     std::deque<Point> body;
-    Snake::Direction direction; 
+    Direction direction; 
 };
 
 #endif //SNAKE_HPP

@@ -57,7 +57,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
 
 TEST_CASE( "snake can be handle a invalid direction", "[snake]") {
     
-    Snake snake(-1, {{x:0, y:0}});
+    Snake snake(static_cast<Snake::Direction>(-1), {{x:0, y:0}});
 
     REQUIRE( snake.move() == false );
     REQUIRE( snake.is_on_pos(Point{x:0, y:0}) );

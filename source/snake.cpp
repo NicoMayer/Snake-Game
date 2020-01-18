@@ -1,7 +1,7 @@
 #include "snake.hpp"
 
 
-Snake::Snake(Snake::Direction dir, std::initializer_list<Point> body) 
+Snake::Snake(Direction dir, std::initializer_list<Point> body) 
     : body(body), direction(dir) {
     
 }
@@ -31,7 +31,7 @@ Point Snake::get_head_pos() const {
     }
 }
 
-void Snake::change_direction(Snake::Direction dir) {
+void Snake::change_direction(Direction dir) {
 
     direction = dir;
 }
