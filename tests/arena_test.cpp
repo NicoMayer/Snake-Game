@@ -43,14 +43,30 @@ TEST_CASE( "arena can move the snake", "[arena]"){
     }
 }
 
-TEST_CASE( "arena can produce food and check the position of the food" ) {
+TEST_CASE( "arena can produce food and check the position of the food", "[arena]" ) {
 
     Arena arena(nullptr, 16, 16);
     
-    Point food_cell = arena.get_food_pos();
-    REQUIRE( arena.is_food_cell(food_cell) == true );
+    Point food_cell_pos = arena.get_food_pos();
+    REQUIRE( arena.is_food_cell(food_cell_pos) == true );
 
-    Point no_food_cell = food_cell.add(-1, -1);
-    REQUIRE( arena.is_food_cell(no_food_cell) == false );
+    food_cell_pos.add(-1,1);
+    REQUIRE( arena.is_food_cell(food_cell_pos) == false );
 
 } 
+
+TEST_CASE( "arena can increase the length of snake", "[arena]" ) {
+    
+    auto snake = std::shared_ptr<Snake>(new Snake(Snake::RIGHT, {{10,10}}));
+    
+    Arena arena(snake, 16, 16);
+
+    arena.set_food_pos(Point{11, 10});
+    
+    REQUIRE( arena.move_snake() == true );
+    REQUIRE( snake->get_length() == 2 );
+    
+}    
+    
+    
+    
