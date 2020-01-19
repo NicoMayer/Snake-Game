@@ -55,7 +55,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
 
 }
 
-TEST_CASE( "snake can be handle a invalid direction", "[snake]") {
+TEST_CASE( "snake can be handle a invalid direction", "[snake]" ) {
     
     Snake snake(static_cast<Snake::Direction>(-1), {{x:0, y:0}});
 
@@ -63,7 +63,7 @@ TEST_CASE( "snake can be handle a invalid direction", "[snake]") {
     REQUIRE( snake.is_on_pos(Point{x:0, y:0}) );
 }
 
-TEST_CASE( "snake can grow" ) {
+TEST_CASE( "snake can grow", "[snake]" ) {
 
     Snake snake(Snake::UP, {{1, 1}});
 
@@ -73,4 +73,23 @@ TEST_CASE( "snake can grow" ) {
     REQUIRE( snake.is_on_pos(Point{x:1, y:1}) );
     REQUIRE( snake.is_on_pos(Point{x:1, y:0}) );
 
+}
+
+TEST_CASE( "snake meanders correctly", "[snake]" ) {
+
+    Snake snake(Snake::UP, {{x:10, y:10}, {x:10, y:11}, {x:9, y:11}, {x:9, y:10}, {x:8, y:10}});
+    
+    REQUIRE( snake.is_on_pos(Point{x:10, y:10}) );
+    REQUIRE( snake.is_on_pos(Point{x:10, y:11}) );
+    REQUIRE( snake.is_on_pos(Point{x:9, y:11}) );
+    REQUIRE( snake.is_on_pos(Point{x:9, y:10}) );
+    REQUIRE( snake.is_on_pos(Point{x:8, y:10}) );
+
+    REQUIRE( snake.move() == true );
+
+    REQUIRE( snake.is_on_pos(Point{x:10, y:9}) );
+    REQUIRE( snake.is_on_pos(Point{x:10, y:10}) );
+    REQUIRE( snake.is_on_pos(Point{x:10, y:11}) );
+    REQUIRE( snake.is_on_pos(Point{x:9, y:11}) );
+    REQUIRE( snake.is_on_pos(Point{x:9, y:10}) );
 }
