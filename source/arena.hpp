@@ -5,10 +5,11 @@
 #include "snake.hpp"
 #include "point.hpp"
 #include "food.hpp"
+#include "colorgrid.hpp"
 
 class Arena {
 public:
-    
+    Arena();    
     Arena(const std::shared_ptr<Snake> &snake, size_t height, size_t width);
 
     bool move_snake();
@@ -18,6 +19,8 @@ public:
     
     bool is_food_cell(Point pos) const;
     bool is_empty_cell(Point pos) const;    
+    
+    void paint(ColorGrid &color_grid);
 private:
 
     bool check_outside_snake();
@@ -26,8 +29,8 @@ private:
     std::shared_ptr<Snake> snake;
     Food food;
 
-    const size_t height;
-    const size_t width;
+    size_t height;
+    size_t width;
 }; 
 
 #endif //ARENA_HPP

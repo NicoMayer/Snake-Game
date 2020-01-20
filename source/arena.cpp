@@ -4,6 +4,10 @@
 #include "arena.hpp"
 #include "point.hpp"
 
+Arena::Arena() 
+    : snake(nullptr), width(0), height(0) {
+}
+
 Arena::Arena(const std::shared_ptr<Snake> &snake, size_t height, size_t width) 
     : height(height), width(width), snake(snake) {
     
@@ -99,4 +103,13 @@ bool Arena::is_empty_cell(Point pos) const {
     return true;
 }
 
- 
+void Arena::paint(ColorGrid &color_grid) {
+    
+    for (int y; y < height; ++y) {
+        for (int x; x < width; ++x) {
+
+            color_grid.set_cell(x, y, ColorGrid::black);
+        }
+    }
+    food.paint(color_grid);
+} 
