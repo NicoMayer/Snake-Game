@@ -4,21 +4,35 @@
 #include <vector>
 #include <cstddef>
 #include <ncurses.h>
+#include "point.hpp"
 
 class ColorGrid {
 public:
 
     enum Color {
-        GREEN = 1,
-        BLACK = 2,
-        RED = 3
+        green = 1,
+        black = 2,
+        red = 3,
+        white = 4
+    };
+
+    enum Key {
+        key_left,
+        key_right,
+        key_down,
+        key_up,
+        no_key_pressed
     };
 
     ColorGrid(size_t width, size_t height);
     ~ColorGrid();
 
-    void set_cell(size_t x, size_t y, ColorGrid::Color color);
+    void set_cell(int x, int y, ColorGrid::Color color);
+    void set_cell(Point pos, ColorGrid::Color color);
     void draw();
+
+    ColorGrid::Key poll_keyboard();
+    void wait_ms(int ms);
 
 private:    
     std::vector<ColorGrid::Color> color_grid;

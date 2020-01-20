@@ -18,7 +18,7 @@ void ColorGrid::init_color_grid(){
     color_grid.reserve(width*height); 
     
     for (auto cell : color_grid){
-        cell = ColorGrid::BLACK;
+        cell = ColorGrid::black;
     }
 }
 void ColorGrid::init_screen(){
@@ -31,6 +31,7 @@ void ColorGrid::init_screen(){
 void ColorGrid::init_keyboard(){
 
     keypad(stdscr, TRUE);
+    nodelay(stdscr, TRUE);
 }
 
 void ColorGrid::init_colors(){
@@ -39,18 +40,28 @@ void ColorGrid::init_colors(){
         return;
     }
         start_color(); 
-        init_pair(ColorGrid::GREEN, COLOR_GREEN, COLOR_GREEN); 
-        init_pair(ColorGrid::BLACK, COLOR_BLACK, COLOR_BLACK);
-        init_pair(ColorGrid::RED, COLOR_RED, COLOR_RED); 
+        init_pair(ColorGrid::green, COLOR_GREEN, COLOR_GREEN); 
+        init_pair(ColorGrid::black, COLOR_BLACK, COLOR_BLACK);
+        init_pair(ColorGrid::red, COLOR_RED, COLOR_RED); 
+        init_pair(ColorGrid::white, COLOR_WHITE, COLOR_WHITE);
 }
 
-void ColorGrid::set_cell(size_t x, size_t y, ColorGrid::Color color){
+void ColorGrid::set_cell(int x, int y, ColorGrid::Color color){
 
-    if (x >= width or y >= height) {
+    if (x < 0 || y < 0 || x >= width || y >= height) {
         return;
     } 
 
     color_grid[y*width + x] = color;
+
+}
+void ColorGrid::set_cell(Point pos, ColorGrid::Color color){
+
+    if (pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height) {
+        return;
+    } 
+
+    color_grid[pos.y*width + pos.x] = color;
 
 }
 
@@ -69,4 +80,23 @@ void ColorGrid::draw(){
     }
 
     refresh();
+}
+
+ColorGrid::Key ColorGrid::poll_keyboard() {
+    
+    int ch = getch();
+
+    switch(ch) {
+        case KEY_LEFT:  return ColorGrid::key_left;
+        case KEY_RIGHT: return ColorGrid::key_right;
+        case KEY_DOWN:  return ColorGrid::key_down;
+        case KEY_UP:    return ColorGrid::key_up;
+    }
+    return ColorGrid::no_key_pressed;
+}
+ 
+
+void ColorGrid::wait_ms(int ms) {
+    
+    napms(ms);
 }
