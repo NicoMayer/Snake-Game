@@ -27,7 +27,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
         snake.change_direction(Snake::UP);
         REQUIRE( snake.move() == true );            
         REQUIRE( snake.is_on_pos(Point{x:10, y:9}) );
-
+        REQUIRE( snake.get_length() == 1 );
     }
 
     SECTION( "snake can be move down" ) {
@@ -35,7 +35,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
         snake.change_direction(Snake::DOWN);
         REQUIRE( snake.move() == true );
         REQUIRE( snake.is_on_pos(Point{x:10, y:11}) );
-
+        REQUIRE( snake.get_length() == 1 );
     }
 
     SECTION( "snake can be move right" ) {
@@ -43,7 +43,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
         snake.change_direction(Snake::RIGHT);
         REQUIRE( snake.move() == true );
         REQUIRE( snake.is_on_pos(Point{x:11, y:10}) );
-
+        REQUIRE( snake.get_length() == 1 );
     }
 
     SECTION( "snake can be move left" ) {
@@ -51,6 +51,7 @@ TEST_CASE( "snake can be move", "[snake]" ) {
         snake.change_direction(Snake::LEFT);
         REQUIRE( snake.move() == true );
         REQUIRE( snake.is_on_pos(Point{x:9, y:10}) );
+        REQUIRE( snake.get_length() == 1 );
     }
 
 }
