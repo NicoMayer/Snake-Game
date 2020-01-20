@@ -3,6 +3,8 @@
 
 #include <memory>
 #include "snake.hpp"
+#include "point.hpp"
+#include "food.hpp"
 
 class Arena {
 public:
@@ -11,10 +13,18 @@ public:
 
     bool move_snake();
     
+    Point get_food_pos() const;
+    void set_food_pos(Point pos);
+    
+    bool is_food_cell(Point pos) const;
+    bool is_empty_cell(Point pos) const;    
 private:
 
     bool check_outside_snake();
+    bool try_to_place_food();
+
     std::shared_ptr<Snake> snake;
+    Food food;
 
     const size_t height;
     const size_t width;

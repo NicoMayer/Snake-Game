@@ -5,10 +5,12 @@
 
 class Food {
     
-    const Point pos;
+    Point pos;
 
 public:
-    Food(Point pos);
+    Food(Point pos = {0,0});
+
+    void set_pos(Point pos);
     Point get_pos() const;
 };
 
