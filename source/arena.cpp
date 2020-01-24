@@ -103,13 +103,21 @@ bool Arena::is_empty_cell(Point pos) const {
     return true;
 }
 
-void Arena::paint(ColorGrid &color_grid) {
+void Arena::paint(ColorGrid &color_grid, Point offset) {
     
-    for (int y; y < height; ++y) {
-        for (int x; x < width; ++x) {
-
-            color_grid.set_cell(x, y, ColorGrid::black);
+    for (int y = 0; y < height + 2; ++y) {
+        for (int x = 0; x < width + 2; ++x) {
+    
+            ColorGrid::Color bg_color = ColorGrid::black;
+    
+            //The border of the arena is white
+            if (x == 0 || x == width + 1 || y == 0 || y == height + 1) {
+                bg_color = ColorGrid::white;
+            }
+    
+            color_grid.set_cell(x + offset.x , y + offset.x , bg_color); 
         }
     }
-    food.paint(color_grid);
+    food.paint(color_grid, offset + Point{1,1});
+    snake->paint(color_grid, offset + Point{1,1});
 } 

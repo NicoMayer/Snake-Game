@@ -20,7 +20,7 @@ public:
     bool is_food_cell(Point pos) const;
     bool is_empty_cell(Point pos) const;    
     
-    void paint(ColorGrid &color_grid);
+    void paint(ColorGrid &color_grid, Point offset);
 private:
 
     bool check_outside_snake();
