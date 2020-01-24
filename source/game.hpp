@@ -15,6 +15,7 @@ public:
     void draw();
 private:
     void init_game();
+    int calc_gamespeed();
    
     std::shared_ptr<ColorGrid> color_grid;
 

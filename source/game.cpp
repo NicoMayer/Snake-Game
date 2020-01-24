@@ -17,22 +17,24 @@ void Game::init_game() {
 }
 
 bool Game::update() {
-
-    color_grid->wait_ms(500);
+    
+    color_grid->wait_ms(calc_gamespeed());
 
     ColorGrid::Key key;
     key = color_grid->poll_keyboard();
-    
-    if (key == ColorGrid::key_up) {
+   
+    Snake::Direction current_dir = snake->get_direction();
+ 
+    if (key == ColorGrid::key_up && current_dir != Snake::DOWN) {
         snake->change_direction(Snake::UP);
     }
-    else if (key == ColorGrid::key_down) {
+    else if (key == ColorGrid::key_down && current_dir != Snake::UP) {
         snake->change_direction(Snake::DOWN);
     }
-    else if (key == ColorGrid::key_left) {
+    else if (key == ColorGrid::key_left && current_dir != Snake::RIGHT) {
         snake->change_direction(Snake::LEFT);
     }
-    else if (key == ColorGrid::key_right) {
+    else if (key == ColorGrid::key_right && current_dir != Snake::LEFT) {
         snake->change_direction(Snake::RIGHT);
     }
 
@@ -49,4 +51,16 @@ void Game::draw() {
 void Game::retry() {
 
     init_game();
+}
+
+int Game::calc_gamespeed() {
+
+    int score = snake->get_length();
+
+    if (score > 50) {
+        return 100;
+    }
+    else {
+        return 400 - 5*score;
+    }
 }
