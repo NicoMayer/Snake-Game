@@ -7,6 +7,7 @@ struct Point {
     
     bool equal(const Point& point) const; 
     void add(int x, int y);    
+    Point operator+ (Point point);
 };
 
 #endif //POINT_HPP
