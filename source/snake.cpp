@@ -74,6 +74,13 @@ bool Snake::move() {
     return true;
 }
          
+void Snake::paint(ColorGrid &color_grid, Point offset) {
+    
+    for (Point pos : body) {
+        color_grid.set_cell(pos + offset, ColorGrid::green);
+    }
+}
+
 void Snake::grow() {
    length += 1;
 }
