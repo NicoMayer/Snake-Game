@@ -1,15 +1,21 @@
 #include <thread>
 #include <chrono>
+#include <memory>
 #include "colorgrid.hpp"
-
-using namespace std::chrono_literals;
+#include "game.hpp"
 
 int main(){
 
-    ColorGrid color_grid(16,16);
+    std::shared_ptr<ColorGrid> color_grid = std::make_shared<ColorGrid>(20,20);
+    
+    Game game(color_grid, 16, 16);
 
-    color_grid.set_cell(0, 0, ColorGrid::GREEN);
-    color_grid.set_cell(15, 0, ColorGrid::GREEN);
-    color_grid.draw();
-    std::this_thread::sleep_for(10s);
+    while (true) {
+
+        if (game.update() == false) {
+           break; 
+        }
+
+        game.draw();
+    }        
 }
