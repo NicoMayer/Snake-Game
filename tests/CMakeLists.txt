@@ -5,6 +5,6 @@ add_executable(snake_game_tests
                 snake_test.cpp
                 arena_test.cpp)
 
-target_link_libraries(snake_game_tests PRIVATE snake_game_lib catch)
+target_link_libraries(snake_game_tests PRIVATE snake_game_lib catch ${CURSES_LIBRARIES})
 
 add_test(NAME Tests COMMAND snake_game_tests)
